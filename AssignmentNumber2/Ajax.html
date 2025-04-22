@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!-- Ye HTML5 document ka declaration hai -->
+<html lang="en">
+<head>
+    <!-- Browser ko batata hai ki ye UTF-8 character encoding use kare -->
+    <meta charset="UTF-8">
+
+    <!-- Ye viewport tag responsive design ke liye use hota hai -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page ka title jo browser tab me dikhai deta hai -->
+    <title>Ajex1</title>
+
+    <!-- jQuery library ko CDN se link kiya gaya hai (version 3.7.1) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Yahan se custom JavaScript start ho raha hai -->
+    <script>
+        // Jab pura page (DOM) load ho jaye tab ye function chalega
+        $(document).ready(function (){
+
+            // Jab "Submit" button pe click ho tab ye function execute hoga
+            $("#btn-2").click(function (){
+
+                // Form ke 3 fields se value le rahe hain aur ek object bana rahe hain
+                const obj = {
+                    name: $("#name").val(),        // name input ki value
+                    email: $("#email").val(),      // email input ki value
+                    mobile: $("#mobile").val()     // mobile input ki value
+                };
+
+                // Object ko JSON string me convert kar rahe hain
+                const myjson = JSON.stringify(obj);
+
+                // JSON string ko localStorage me "data" key ke under store kar rahe hain
+                localStorage.setItem("data", myjson);
+
+                // `div1` ke andar jk2.html file ka content load kar rahe hain
+                $("#div1").load("http://127.0.0.1:5500/jk2.html")
+            })
+        })
+    </script>
+
+</head>
+<body>
+
+    <!-- Page heading dikhane ke liye -->
+    <h1>Student Details</h1>
+
+    <!-- Is div ke andar form inputs hain aur isi me later content load hoga -->
+    <div id="div1">
+
+        <!-- Name input ke liye label aur text box -->
+        <label for="name">Enter name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <!-- Mobile input ke liye label aur text box -->
+        <label for="mobile">Enter mobile number:</label><br>
+        <input type="text" id="mobile" name="mobile"><br><br>
+
+        <!-- Email input ke liye label aur text box -->
+        <label for="email">Enter email id:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+
+        <!-- Submit button jispe click hone par data store hoga aur page load hoga -->
+        <button id="btn-2">Submit</button>
+
+    </div>
+</body>
+</html>

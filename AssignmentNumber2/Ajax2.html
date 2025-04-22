@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- HTML5 document declaration -->
+<html lang="en">
+<head>
+    <!-- Page ki character encoding UTF-8 set kar rahe hain -->
+    <meta charset="UTF-8">
+
+    <!-- Page ko mobile-friendly aur responsive banane ke liye viewport set kiya gaya hai -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page ka title jo browser ke tab me dikhai deta hai -->
+    <title>Ajex2</title>
+
+    <!-- jQuery library ko CDN se include kiya gaya hai (version 3.7.1) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Custom script jQuery ke saath -->
+    <script>
+        // Jab poora page (HTML) load ho jaye tab ye function chalega
+        $(document).ready(function (){
+
+            // Jab "Display" button pe click kiya jaye
+            $("#btn-1").click(function (){
+
+                // localStorage se "data" naam ka item get kiya ja raha hai
+                const var1 = localStorage.getItem("data");
+
+                // JSON string ko wapas JavaScript object me convert kar rahe hain
+                const myobj = JSON.parse(var1);
+
+                // Object ke name property ko name input field me set kar rahe hain
+                $("#name").val(myobj.name);
+
+                // Object ke email property ko email input field me set kar rahe hain
+                $("#email").val(myobj.email);
+
+                // Object ke mobile property ko mobile input field me set kar rahe hain
+                $("#mobile").val(myobj.mobile);
+            })
+        })
+    </script>
+</head>
+<body>
+
+    <!-- Page heading -->
+    <h1>Student Details</h1>
+
+    <!-- Form jisme data show kiya jaayega -->
+    <div id="div1">
+
+        <!-- Name input field with label -->
+        <label for="name">Enter name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+
+        <!-- Mobile number input field with label -->
+        <label for="mobile">Enter mobile number:</label><br>
+        <input type="text" id="mobile" name="mobile"><br><br>
+
+        <!-- Email input field with label -->
+        <label for="email">Enter email id:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+
+        <!-- Button jispe click karne par localStorage ka data display hoga -->
+        <button id="btn-1">Display</button>
+    </div>
+</body>
+</html>
